@@ -280,4 +280,4 @@ The Attendance Manager API provides endpoints for managing students, subjects, a
 ---
 ```
 
-This should now be the complete `README.md` with all your API endpoints, formatted and ready for use.
+
