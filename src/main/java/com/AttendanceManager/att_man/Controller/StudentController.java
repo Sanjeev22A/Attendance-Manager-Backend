@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +50,7 @@ public class StudentController {
     public ResponseEntity<Student> getStudent(@PathVariable long id){
         Optional<Student> stud=studentService.getStudentByRegNo(id);
         if(stud.isPresent()){
-            return new ResponseEntity<>(stud.get(),HttpStatus.FOUND);
+            return new ResponseEntity<>(stud.get(),HttpStatus.OK);
         }
         else{
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
@@ -106,6 +107,16 @@ public class StudentController {
         } catch (StudentNotFoundException | SubjectNotFoundException | IllegalArgumentException |
                  ClassDateExistException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/Student/{regno}/subjects")
+    public ResponseEntity<?> fetchStudentSubject(@PathVariable long regno){
+        try{
+            List<Subject> subjectList = studentService.getStudentSubject(regno);
+            return new ResponseEntity<>(subjectList,HttpStatus.OK);
+        } catch (StudentNotFoundException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 }

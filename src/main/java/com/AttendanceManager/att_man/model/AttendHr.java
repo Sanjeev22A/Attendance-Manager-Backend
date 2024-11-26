@@ -6,21 +6,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AttendHr {
     @JsonProperty("attend")
-    boolean attend;
+    Integer attend;
     @JsonProperty("hours")
     Integer hours;
-    AttendHr(boolean attend,Integer hours){
+    AttendHr(Integer attend,Integer hours){
         this.attend=attend;
         this.hours=hours;
     }
     AttendHr(){}
     //Getter and setter for attend
 
-    public boolean isAttend() {
+    public Integer isAttend() {
         return attend;
     }
 
-    public void setAttend(boolean attend) {
+    public void setAttend(Integer attend) {
         this.attend = attend;
     }
 

@@ -79,6 +79,16 @@ public class StudentService {
         return updateStudentInDb;
     }
 
+    //Fetch Student's Subject
+    public List<Subject> getStudentSubject(long regno) throws StudentNotFoundException {
+        Optional<Student> st = getStudentByRegNo(regno);
+
+        if(st.isPresent()){
+            return st.get().getSubjectList();
+        }else{
+            throw new StudentNotFoundException("Student with regno :"+regno+" not found");
+        }
+    }
 
     //Add a subject to the subject list
     public Student addSubjectToStudent(long regno, Subject newSubject) throws StudentNotFoundException, SubjectExistException {

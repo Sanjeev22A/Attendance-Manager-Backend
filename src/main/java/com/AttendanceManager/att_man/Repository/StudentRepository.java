@@ -12,4 +12,5 @@ public interface StudentRepository extends MongoRepository<Student,Long> {
 
     Optional<Student> findByregno(long regno);
     void deleteByregno(long regno);
+//    Optional<Student> findByname(String name);
 }
