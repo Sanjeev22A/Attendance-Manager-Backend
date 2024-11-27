@@ -28,7 +28,7 @@ public class Student {
     private String name;
 
     @NotNull
-    @Size(min=6,max=20)
+    @Size(min = 6, max = 20)
     @JsonProperty("password")
     private String password;
     @JsonProperty("subjectList")
@@ -36,18 +36,18 @@ public class Student {
     @JsonProperty("profilePic")
     private byte[] profilePic;
 
-    public Student(){}
-
-    public Student(long regno,String name,String password,List<Subject> subjectList,byte[] profilePic){
-        this.regno=regno;
-        this.name=name;
-        this.password=password;
-        this.subjectList=subjectList;
-        this.profilePic=profilePic;
+    public Student() {
     }
 
+    public Student(long regno, String name, String password, List<Subject> subjectList, byte[] profilePic) {
+        this.regno = regno;
+        this.name = name;
+        this.password = password;
+        this.subjectList = subjectList;
+        this.profilePic = profilePic;
+    }
 
-    //Getter and setter for regno
+    // Getter and setter for regno
     public long getRegno() {
         return regno;
     }
@@ -56,7 +56,7 @@ public class Student {
         this.regno = regno;
     }
 
-    //Getter and setter for name
+    // Getter and setter for name
 
     public String getName() {
         return name;
@@ -66,18 +66,21 @@ public class Student {
         this.name = name;
     }
 
-    //Getter and setter for password
+    // Getter and setter for password
 
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void encryptSet(String password) {
         this.password = PasswordUtils.encodePassword(password);
     }
 
-
-    //Getter and setter for subject list
+    // Getter and setter for subject list
     public List<Subject> getSubjectList() {
         return subjectList;
     }
@@ -86,7 +89,7 @@ public class Student {
         this.subjectList = subjectList;
     }
 
-    //Getter and setter for profilePic
+    // Getter and setter for profilePic
 
     public byte[] getProfilePic() {
         return profilePic;
